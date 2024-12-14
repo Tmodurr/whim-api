@@ -2,6 +2,7 @@
   "dependencies": {
     "@google/generative-ai": "^0.21.0",
     "axios": "^1.7.9",
+    "chatgpt": "^5.2.5",
     "dotenv": "^16.4.7",
     "koa": "^2.15.3",
     "koa-router": "^13.0.1"
