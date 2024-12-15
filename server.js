@@ -24,20 +24,9 @@ router.get('/tourdates', async (ctx) => {
 
   try {
     
-    // TODO Fetch the tour data from BARD; returns JSON with attributes (name, date, location, etc.)
-    // Uses mapbox geocoding API to convert location to coordinates
-    // creates a GeoJSON object with the data
-    // uses geojson validator to validate the GeoJSON object
-    // returns the GeoJSON object
+    const data = await generateTourData()
+    ctx.body = data
 
-    const response = await generateTourData()
-    console.log(response)
-
-    // Return the GeoJSON
-    ctx.body = {
-      type: 'FeatureCollection',
-      features: JSON.stringify(response),
-    };
   } catch (error) {
     console.error('Error fetching or processing tour data:', error);
     ctx.status = 500;
