@@ -24,19 +24,28 @@ async function generateTourData(url) {
 
   try {
 
-    const prompt =  `
-      At this site ${url}, please provide a list of tour dates within this site.
-     Include the name of the venue, the date of the show, and the location of the venue.
-    If possible, please provide the ticket price and a link to purchase tickets.
-    The returned information should be serialized text as JSON, with an array of objects, each containing the following attributes:
-    - name: The name of the venue
-    - date: The date of the show
-    - location: The location of the venue
-    - price: The ticket price (optional)
+    // const prompt =  `
+    //   Visit this page, ${url}, which should have tour dates listed for a band/artist. Scrape all available tour dates, including the following details:
 
-    I should be able to parse the returned JSON and extract the information for each show.
-    There should be no comments (including ticks in the returned text). The returned text must be able to pass 
-    JSON.parse without error. 
+    //   Ensure to retrieve data for all listed events. Format the results into a JSON document with each event as an object in the following structure:
+    // - name: The name of the venue
+    // - date: The date of the show
+    // - location: The location of the venue
+    // - price: The ticket price (optional)
+
+    // I should be able to parse the returned JSON and extract the information for each show.
+    // There should be no comments (including ticks in the returned text). 
+    // `;
+
+    const prompt = `Go to this site and then return a list of tour dates as bullets with venue and location (${url}).
+    
+    Please take extra care to ensure that the all dates available in the webpage (DOM) are returned in the response.
+    Return the data in json with the following attributes. 
+
+    name: The name of the venue
+    date: The date of the show with day/month/year
+    location: The location of the venue
+    
     `;
 
     const result = await model.generateContent(prompt);

@@ -24,7 +24,7 @@ router.get('/tourdates', async (ctx) => {
 
   try {
     
-    const data = await generateTourData()
+    const data = await generateTourData(url)
     ctx.body = data
 
   } catch (error) {
