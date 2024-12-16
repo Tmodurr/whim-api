@@ -6,7 +6,8 @@
     "chatgpt": "^5.2.5",
     "dotenv": "^16.4.7",
     "koa": "^2.15.3",
-    "koa-router": "^13.0.1"
+    "koa-router": "^13.0.1",
+    "puppeteer": "^23.10.4"
   },
   "scripts": {
     "start": "node server.js"
